@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stoyan Petrov | Lead QA Engineer</title>
+<meta name="description" content="Stoyan Petrov — Lead QA Engineer. 15+ years in software quality, 10+ in test automation. Portfolio of public test-automation projects.">
+<meta name="author" content="Stoyan Petrov">
+<meta property="og:title" content="Stoyan Petrov | Lead QA Engineer">
+<meta property="og:description" content="15+ years in software quality, 10+ in test automation. Public test-automation projects, with source.">
+<meta property="og:type" content="website">
+<!-- TODO: set these two once the site is live on GitHub Pages -->
+<meta property="og:url" content="https://s-petrov8.github.io/">
+<meta property="og:image" content="https://s-petrov8.github.io/assets/preview.png">
+<style>
+/* ─────────────────────────  tokens  ───────────────────────── */
+:root{
+  --bg:            #0A0D12;
+  --panel:         #10151C;
+  --panel-hi:      #151C25;
+  --line:          rgba(214,228,245,0.08);
+  --line-hi:       rgba(214,228,245,0.16);
+  --ink:           #E8EFF7;
+  --ink-2:         #97A6B8;
+  --ink-3:         #64717F;
+  --accent:        #5B9DFF;
+  --accent-soft:   rgba(91,157,255,0.12);
+  --pass:          #4ADE80;
+  --mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --maxw: 760px;
+}
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#F7F8FA; --panel:#FFFFFF; --panel-hi:#FFFFFF;
+    --line:rgba(10,13,18,0.09); --line-hi:rgba(10,13,18,0.18);
+    --ink:#111820; --ink-2:#4C5967; --ink-3:#78848F;
+    --accent:#1F6FEB; --accent-soft:rgba(31,111,235,0.09);
+    --pass:#16A34A;
+  }
+}
+
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%;}
+body{
+  background:
+    radial-gradient(ellipse 1000px 620px at 50% -8%, var(--accent-soft), transparent 62%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+/* faint engineering grid, faded out below the fold */
+body::before{
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse 1000px 760px at 50% 0%, #000, transparent 70%);
+          mask-image:radial-gradient(ellipse 1000px 760px at 50% 0%, #000, transparent 70%);
+  opacity:.7;
+}
+a{color:inherit;}
+img{max-width:100%; display:block;}
+::selection{background:var(--accent); color:#fff;}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px;}
+
+.wrap{position:relative; z-index:1; max-width:var(--maxw); margin:0 auto; padding:96px 24px 80px;}
+
+/* ─────────────────────────  motion  ───────────────────────── */
+@keyframes rise{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:none;}}
+.rise{opacity:0; animation:rise .7s cubic-bezier(.16,1,.3,1) forwards;}
+.d1{animation-delay:.05s} .d2{animation-delay:.12s} .d3{animation-delay:.19s}
+.d4{animation-delay:.26s} .d5{animation-delay:.33s} .d6{animation-delay:.40s}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important;}
+  .rise{opacity:1;}
+  html{scroll-behavior:auto;}
+}
+
+/* ─────────────────────────  hero  ───────────────────────── */
+.avatar{
+  width:64px; height:64px; border-radius:50%; object-fit:cover;
+  border:1px solid var(--line-hi); background:var(--panel);
+}
+.id-row{display:flex; align-items:center; gap:16px;}
+.eyebrow{
+  font-family:var(--mono); font-size:11.5px; letter-spacing:2.4px; text-transform:uppercase;
+  color:var(--accent);
+}
+h1{
+  font-size:clamp(34px, 6vw, 46px); font-weight:650; letter-spacing:-1.1px;
+  margin-top:12px; line-height:1.1;
+}
+.role{
+  font-size:17px; color:var(--ink-2); font-weight:400; margin-top:12px; letter-spacing:-.1px;
+}
+.lede{ font-size:15.5px; color:var(--ink-2); max-width:60ch; margin-top:18px; }
+
+.meta{
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:22px;
+  font-family:var(--mono); font-size:12px; color:var(--ink-2);
+}
+.chip{
+  display:inline-flex; align-items:center; gap:7px;
+  border:1px solid var(--line-hi); border-radius:100px; padding:5px 13px;
+  background:var(--panel);
+}
+.chip .dot{width:6px; height:6px; border-radius:50%; background:var(--pass); flex:none;}
+
+.actions{display:flex; flex-wrap:wrap; gap:11px; margin-top:28px;}
+.btn{
+  font-family:var(--mono); font-size:12.5px; letter-spacing:.2px;
+  padding:11px 20px; border-radius:100px; text-decoration:none;
+  border:1px solid var(--line-hi); color:var(--ink); background:var(--panel);
+  transition:border-color .22s, background .22s, transform .22s, color .22s;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.btn:hover{border-color:var(--accent); background:var(--accent-soft); transform:translateY(-2px);}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
+.btn.primary:hover{filter:brightness(1.1); background:var(--accent);}
+.btn svg{width:14px; height:14px; flex:none;}
+
+/* ─────────────────────────  sections  ───────────────────── */
+section{margin-top:72px;}
+.sec-head{
+  display:flex; align-items:baseline; gap:14px; margin-bottom:26px;
+  padding-bottom:12px; border-bottom:1px solid var(--line);
+}
+h2{
+  font-size:13px; font-family:var(--mono); font-weight:600;
+  letter-spacing:1.8px; text-transform:uppercase; color:var(--ink);
+}
+.sec-head .hint{font-size:12px; color:var(--ink-3); margin-left:auto; font-family:var(--mono);}
+
+/* project cards */
+.cards{display:grid; gap:14px;}
+a.work{
+  display:block; text-decoration:none;
+  border:1px solid var(--line); border-radius:12px; background:var(--panel);
+  padding:22px 24px; transition:border-color .22s, transform .22s, background .22s;
+}
+a.work:hover{border-color:var(--accent); background:var(--panel-hi); transform:translateY(-2px);}
+.work-top{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.work-top .repo{font-family:var(--mono); font-size:14.5px; font-weight:600; color:var(--ink);}
+.work-top .arrow{color:var(--ink-3); font-family:var(--mono); font-size:13px; margin-left:auto;}
+a.work:hover .arrow{color:var(--accent);}
+.work p{color:var(--ink-2); font-size:14.5px; margin-top:10px;}
+.arch{list-style:none; margin-top:12px;}
+.arch li{
+  color:var(--ink-2); font-size:13.5px; line-height:1.55;
+  padding-left:14px; position:relative; margin-top:7px;
+}
+.arch li::before{content:'—'; position:absolute; left:0; color:var(--ink-3);}
+.tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px;}
+.tag{
+  font-family:var(--mono); font-size:11px; color:var(--ink-2);
+  border:1px solid var(--line); border-radius:5px; padding:3px 8px; background:var(--bg);
+}
+
+/* ─────────────────────────  footer  ───────────────────── */
+footer{
+  margin-top:76px; padding-top:26px; border-top:1px solid var(--line);
+  display:flex; flex-wrap:wrap; gap:14px; align-items:center;
+  font-family:var(--mono); font-size:12px; color:var(--ink-3);
+}
+footer a{color:var(--ink-2); text-decoration:none; transition:color .2s;}
+footer a:hover{color:var(--accent);}
+footer .right{margin-left:auto;}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <!-- ══════════════════  HEADER  ══════════════════ -->
+  <header>
+    <div class="id-row rise d1">
+      <img class="avatar" src="assets/avatar.png" alt="Stoyan Petrov" width="64" height="64">
+      <div>
+        <p class="eyebrow">Quality Engineering · Test Automation</p>
+        <h1>Stoyan Petrov</h1>
+      </div>
+    </div>
+    <p class="role rise d2">Lead QA Engineer</p>
+
+    <p class="lede rise d3">
+      15+ years in software quality, 10+ in test automation. Most recently owned quality for a
+      multi-instance crypto payments platform and led a 5-engineer QA team across four countries.
+      I am as comfortable embedded in a scrum team as running a QA function.
+    </p>
+
+    <div class="meta rise d4">
+      <span class="chip"><span class="dot"></span>Open to remote roles</span>
+      <span class="chip">Based in Istanbul</span>
+      <span class="chip">Bulgarian (EU) citizen — no permit or sponsorship needed in the EU/EEA</span>
+    </div>
+
+    <nav class="actions rise d5">
+      <a class="btn primary" href="mailto:stoyanpetrov8@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        Email me
+      </a>
+      <a class="btn" href="https://github.com/s-petrov8" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17.5 4.7 18.5 5 18.5 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/stoyan-petrov-a827a3199/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.03-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21h-4z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://www.upwork.com/freelancers/~0132ffea6b55350b9d" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+        Upwork
+      </a>
+      <!-- TODO: drop the PDF at assets/Stoyan-Petrov-CV.pdf -->
+      <a class="btn" href="assets/Stoyan-Petrov-CV.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0 4-4m-4 4-4-4M4 20h16"/></svg>
+        CV (PDF)
+      </a>
+    </nav>
+  </header>
+
+  <!-- ══════════════════  PROJECTS  ══════════════════ -->
+  <section>
+    <div class="sec-head"><h2>Projects</h2><span class="hint">source included</span></div>
+    <div class="cards">
+
+      <a class="work" href="https://github.com/s-petrov8/playwright-qa-portfolio" target="_blank" rel="noopener">
+        <div class="work-top">
+          <span class="repo">playwright-qa-portfolio</span>
+          <span class="arrow">github&nbsp;↗</span>
+        </div>
+        <p>
+          Playwright test suite in TypeScript — 47 tests split across API and UI, with Zod
+          contracts validating every response and the full run wired into CI.
+        </p>
+        <ul class="arch">
+          <li>Every suite provisions its own state through the API and tears it down after, so no test depends on a record it didn't create — the suite runs from a cold environment and leaves nothing behind.</li>
+          <li>Every asserted response is parsed through a strict Zod schema, so a field the API renames or drops fails the run it appears in, instead of passing quietly.</li>
+          <li>One session shape covers every identity — the same fixture signs in a single admin or two concurrent users for an end-to-end approval flow, without a role × page fixture matrix.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">TypeScript</span><span class="tag">Playwright</span>
+          <span class="tag">API + UI</span><span class="tag">Zod contracts</span>
+          <span class="tag">GitHub Actions</span>
+        </div>
+      </a>
+
+      <a class="work" href="https://github.com/s-petrov8/nestjs-supertest-contract-suite" target="_blank" rel="noopener">
+        <div class="work-top">
+          <span class="repo">nestjs-supertest-contract-suite</span>
+          <span class="arrow">github&nbsp;↗</span>
+        </div>
+        <p>
+          In-process Supertest suite with a hand-written Zod contract layer, run against a public
+          NestJS API. 39 tests, 17 endpoints, 34 strict schemas — and two real defects found in
+          the app it tests.
+        </p>
+        <ul class="arch">
+          <li>Response schemas are written from the published API spec rather than generated from the code under test, so a response that drifts from what was promised fails, instead of quietly becoming the new baseline.</li>
+          <li>Endpoint contracts and multi-call behaviour are tested in separate layers — both real defects it found were flow-only, invisible to any single-endpoint test.</li>
+          <li>Types are inferred straight from the same Zod schemas that validate each response, so a schema change breaks compilation at every call site still using the old shape, before the suite ever runs.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag">TypeScript</span><span class="tag">Supertest</span>
+          <span class="tag">Zod contracts</span><span class="tag">GitHub Actions</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Stoyan Petrov</span>
+    <span class="right">
+      <a href="mailto:stoyanpetrov8@gmail.com">stoyanpetrov8@gmail.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/s-petrov8" target="_blank" rel="noopener">github.com/s-petrov8</a>
+    </span>
+  </footer>
+
+</main>
+</body>
+</html>
